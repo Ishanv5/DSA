@@ -57,6 +57,15 @@ int peek(struct stack* sp, int i){
         return sp->arr[arrayInd];
     }
 }
+ 
+int stackTop(struct stack* sp){
+    return sp->arr[sp->top];
+}
+ 
+int stackBottom(struct stack* sp){
+    return sp->arr[0];
+}
+ 
 int main(){
     struct stack *sp = (struct stack *) malloc(sizeof(struct stack));
     sp->size = 50;
@@ -66,7 +75,7 @@ int main(){
  
     printf("Before pushing, Full: %d\n", isFull(sp));
     printf("Before pushing, Empty: %d\n", isEmpty(sp));
-        push(sp, 1);
+    push(sp, 1);
     push(sp, 23);
     push(sp, 99);
     push(sp, 75);
@@ -76,13 +85,16 @@ int main(){
     push(sp, 46);
     push(sp, 89);
     push(sp, 6);  
-    push(sp, 5);      // Printing values from the stack
-    for (int j = 1; j <= sp->top + 1; j++)
-    {
-        printf("The value at position %d is %d\n", j, peek(sp, j));
-    }
-
+    push(sp, 5);  
     push(sp, 75);  
-
+    printf("The top most value of this stack is %d\n", stackTop(sp));
+    printf("The bottom most value of this stack is %d\n", stackBottom(sp));
+    
+    // // Printing values from the stack
+    // for (int j = 1; j <= sp->top + 1; j++)
+    // {
+    //     printf("The value at position %d is %d\n", j, peek(sp, j));
+    // }
+     
     return 0;
 }
